@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<!-- <head> 
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("client.html"); 
+    });
+    </script> 
+  	</head>  -->
+    <head>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    </head>
+   	<body> 
+        <div id="example" style="border: 1px solid rgb(204, 204, 204); margin: 5px 0pt; padding: 5px;">Example div</div>
+        <div id="sam"></div>
+    <form>
+      <table border = 1>
+            <div><textarea class="example-default-value" id="example-textarea"  style="width: 400px; height: 50px;">{{result}}</textarea></div>
+            <div>
+      </table>
+      </form>
+
+      <div data-include="client.html"></div>
+   	</body>
+
+    <script language="javascript">
+$('.example-default-value').each(function() {
+    var default_value=[];
+    default_value = $("#example-textarea").val();
+    alert(default_value[0])
+    for(var i=0;i<default_value.length();i++)
+    {
+      $("#sam").append("<div id="+default_value[i]+"</div>");
+    }
+    $("div").click(function()
+    {
+        var valuee=$(this).text();
+        alert(valuee);
+    });
+    
+    $(this).focus(function() {
+        if(this.value == default_value) {
+            this.value = '';
+        }
+    });
+    $(this).blur(function() {
+        if(this.value == '') {
+            this.value = default_value;
+        }
+    });
+});
+function example_append() {
+    $('#example').append($('#example-textarea').val());
+}
+</script>
+</html>
